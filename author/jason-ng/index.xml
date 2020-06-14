@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Jason Ng | Data</title>
+    <title>Jason Ng</title>
     <link>https://jasonbuild.github.io/author/jason-ng/</link>
       <atom:link href="https://jasonbuild.github.io/author/jason-ng/index.xml" rel="self" type="application/rss+xml" />
     <description>Jason Ng</description>
