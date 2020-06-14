@@ -3,6 +3,26 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://jasonbuild.github.io/</loc>
+    <lastmod>2020-06-14T23:52:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jasonbuild.github.io/post/hugo/</loc>
+    <lastmod>2020-06-14T23:52:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jasonbuild.github.io/post/</loc>
+    <lastmod>2020-06-14T23:52:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jasonbuild.github.io/post/python-parallel/</loc>
+    <lastmod>2020-06-14T23:46:21+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://jasonbuild.github.io/authors/</loc>
   </url>
   
@@ -11,15 +31,7 @@
   </url>
   
   <url>
-    <loc>https://jasonbuild.github.io/</loc>
-  </url>
-  
-  <url>
-    <loc>https://jasonbuild.github.io/author/nelson-bighetti/</loc>
-  </url>
-  
-  <url>
-    <loc>https://jasonbuild.github.io/post/</loc>
+    <loc>https://jasonbuild.github.io/author/jason-ng/</loc>
   </url>
   
   <url>

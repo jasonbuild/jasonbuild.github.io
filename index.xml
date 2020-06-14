@@ -5,12 +5,106 @@
     <link>https://jasonbuild.github.io/</link>
       <atom:link href="https://jasonbuild.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Data</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 14 Jun 2020 23:52:28 +0800</lastBuildDate>
     <image>
       <url>https://jasonbuild.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Data</title>
       <link>https://jasonbuild.github.io/</link>
     </image>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://jasonbuild.github.io/post/hugo/</link>
+      <pubDate>Sun, 14 Jun 2020 23:52:28 +0800</pubDate>
+      <guid>https://jasonbuild.github.io/post/hugo/</guid>
+      <description>&lt;h2 id=&#34;install-hugo&#34;&gt;install hugo&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://rimdev.io/hugo-extended-latest-install-script-for-macos/&#34;&gt;https://rimdev.io/hugo-extended-latest-install-script-for-macos/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;publish-to-github-pages&#34;&gt;publish to github pages&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/deployment/#github-pages&#34;&gt;https://sourcethemes.com/academic/docs/deployment/#github-pages&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;update&#34;&gt;update&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;git add .
+git commit -m &amp;quot;Initial commit&amp;quot;
+git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;hugo
+cd public
+git add .
+git commit -m &amp;quot;Build website&amp;quot;
+git push origin master
+cd ..
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Python Parallel</title>
+      <link>https://jasonbuild.github.io/post/python-parallel/</link>
+      <pubDate>Sun, 14 Jun 2020 23:46:21 +0800</pubDate>
+      <guid>https://jasonbuild.github.io/post/python-parallel/</guid>
+      <description>&lt;h2 id=&#34;multithread&#34;&gt;multithread&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import urllib2
+from multiprocessing.dummy import Pool as ThreadPool
+
+urls = [
+  &#39;http://www.python.org&#39;,
+  &#39;http://www.python.org/about/&#39;,
+  &#39;http://www.onlamp.com/pub/a/python/2003/04/17/metaclasses.html&#39;,
+  &#39;http://www.python.org/doc/&#39;,
+  &#39;http://www.python.org/download/&#39;,
+  &#39;http://www.python.org/getit/&#39;,
+  &#39;http://www.python.org/community/&#39;,
+  &#39;https://wiki.python.org/moin/&#39;,
+  &#39;http://planet.python.org/&#39;,
+  &#39;https://wiki.python.org/moin/LocalUserGroups&#39;,
+  &#39;http://www.python.org/psf/&#39;,
+  &#39;http://docs.python.org/devguide/&#39;,
+  &#39;http://www.python.org/community/awards/&#39;
+  # etc..
+  ]
+
+# Make the Pool of workers
+pool = ThreadPool(4)
+# Open the urls in their own threads
+# and return the results
+results = pool.map(urllib2.urlopen, urls)
+#close the pool and wait for the work to finish
+pool.close()
+pool.join()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;multiprocess&#34;&gt;multiprocess&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from multiprocessing import Pool
+from PIL import Image
+
+SIZE = (75,75)
+SAVE_DIRECTORY = &#39;thumbs&#39;
+
+def get_image_paths(folder):
+  return (os.path.join(folder, f)
+      for f in os.listdir(folder)
+      if &#39;jpeg&#39; in f)
+
+def create_thumbnail(filename):
+  im = Image.open(filename)
+  im.thumbnail(SIZE, Image.ANTIALIAS)
+  base, fname = os.path.split(filename)
+  save_path = os.path.join(base, SAVE_DIRECTORY, fname)
+  im.save(save_path)
+
+if __name__ == &#39;__main__&#39;:
+  folder = os.path.abspath(
+    &#39;11_18_2013_R000_IQM_Big_Sur_Mon__e10d1958e7b766c3e840&#39;)
+  os.mkdir(os.path.join(folder, SAVE_DIRECTORY))
+
+  images = get_image_paths(folder)
+
+  pool = Pool()
+    pool.map(create_thumbnail, images)
+    pool.close()
+    pool.join()
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
   </channel>
 </rss>
