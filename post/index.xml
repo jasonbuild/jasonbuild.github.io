@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts | Jason Ng</title>
+    <title>Posts | Jason Build</title>
     <link>https://jasonbuild.github.io/post/</link>
       <atom:link href="https://jasonbuild.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
@@ -13,19 +13,22 @@
     </image>
     
     <item>
-      <title>Hugo</title>
+      <title>Hugo Setup</title>
       <link>https://jasonbuild.github.io/post/hugo/</link>
       <pubDate>Sun, 14 Jun 2020 23:52:28 +0800</pubDate>
       <guid>https://jasonbuild.github.io/post/hugo/</guid>
-      <description>&lt;h2 id=&#34;install-hugo&#34;&gt;install hugo&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://rimdev.io/hugo-extended-latest-install-script-for-macos/&#34;&gt;https://rimdev.io/hugo-extended-latest-install-script-for-macos/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;publish-to-github-pages&#34;&gt;publish to github pages&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/deployment/#github-pages&#34;&gt;https://sourcethemes.com/academic/docs/deployment/#github-pages&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;update&#34;&gt;update&lt;/h2&gt;
+      <description>&lt;h2 id=&#34;install-hugo-on-mac&#34;&gt;Install hugo on mac&lt;/h2&gt;
+&lt;p&gt;Use the script from &lt;a href=&#34;https://rimdev.io/hugo-extended-latest-install-script-for-macos/&#34;&gt;https://rimdev.io/hugo-extended-latest-install-script-for-macos/&lt;/a&gt; to install hugo.&lt;/p&gt;
+&lt;h2 id=&#34;setup-repo&#34;&gt;Setup repo&lt;/h2&gt;
+&lt;p&gt;Follow the official guide &lt;a href=&#34;https://sourcethemes.com/academic/docs/deployment/#github-pages&#34;&gt;https://sourcethemes.com/academic/docs/deployment/#github-pages&lt;/a&gt; to fork the Academic Kickstart repository.&lt;/p&gt;
+&lt;h2 id=&#34;configure-your-site&#34;&gt;Configure your site&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;git add .
 git commit -m &amp;quot;Initial commit&amp;quot;
 git push -u origin master
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;publish-to-github-pages&#34;&gt;publish to github pages&lt;/h2&gt;
+&lt;p&gt;create new post using &lt;code&gt;hugo new  --kind post post/hugo&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;publish/update github pages&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;hugo
 cd public
 git add .
@@ -37,71 +40,37 @@ cd ..
     </item>
     
     <item>
-      <title>Python Parallel</title>
+      <title>Multi-threaded Python Parallelization</title>
       <link>https://jasonbuild.github.io/post/python-parallel/</link>
       <pubDate>Sun, 14 Jun 2020 23:46:21 +0800</pubDate>
       <guid>https://jasonbuild.github.io/post/python-parallel/</guid>
-      <description>&lt;h2 id=&#34;multithread&#34;&gt;multithread&lt;/h2&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import urllib2
+      <description>&lt;p&gt;One common use case of parallel in Python is network requests. One of the most simple solutions to send million of requests is using &lt;code&gt;multiprocessing.dummy.Pool&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Sample code&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import requests
 from multiprocessing.dummy import Pool as ThreadPool
 
-urls = [
-  &#39;http://www.python.org&#39;,
-  &#39;http://www.python.org/about/&#39;,
-  &#39;http://www.onlamp.com/pub/a/python/2003/04/17/metaclasses.html&#39;,
-  &#39;http://www.python.org/doc/&#39;,
-  &#39;http://www.python.org/download/&#39;,
-  &#39;http://www.python.org/getit/&#39;,
-  &#39;http://www.python.org/community/&#39;,
-  &#39;https://wiki.python.org/moin/&#39;,
-  &#39;http://planet.python.org/&#39;,
-  &#39;https://wiki.python.org/moin/LocalUserGroups&#39;,
-  &#39;http://www.python.org/psf/&#39;,
-  &#39;http://docs.python.org/devguide/&#39;,
-  &#39;http://www.python.org/community/awards/&#39;
-  # etc..
-  ]
 
-# Make the Pool of workers
+def fetch(url):
+  resp = requests.get(url)
+  if resp.status_code == 200:
+    content = resp.text
+  else:
+    content = None
+  data = {
+    &#39;url&#39;: url,
+    &#39;content&#39;: content
+  }
+  return data
+
+
+urls = [
+  ...
+]
+
 pool = ThreadPool(4)
-# Open the urls in their own threads
-# and return the results
-results = pool.map(urllib2.urlopen, urls)
-#close the pool and wait for the work to finish
+data_list = pool.map(requests.get, urls)
 pool.close()
 pool.join()
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;multiprocess&#34;&gt;multiprocess&lt;/h2&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from multiprocessing import Pool
-from PIL import Image
-
-SIZE = (75,75)
-SAVE_DIRECTORY = &#39;thumbs&#39;
-
-def get_image_paths(folder):
-  return (os.path.join(folder, f)
-      for f in os.listdir(folder)
-      if &#39;jpeg&#39; in f)
-
-def create_thumbnail(filename):
-  im = Image.open(filename)
-  im.thumbnail(SIZE, Image.ANTIALIAS)
-  base, fname = os.path.split(filename)
-  save_path = os.path.join(base, SAVE_DIRECTORY, fname)
-  im.save(save_path)
-
-if __name__ == &#39;__main__&#39;:
-  folder = os.path.abspath(
-    &#39;11_18_2013_R000_IQM_Big_Sur_Mon__e10d1958e7b766c3e840&#39;)
-  os.mkdir(os.path.join(folder, SAVE_DIRECTORY))
-
-  images = get_image_paths(folder)
-
-  pool = Pool()
-    pool.map(create_thumbnail, images)
-    pool.close()
-    pool.join()
-
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>

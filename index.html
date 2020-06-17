@@ -20,7 +20,7 @@
   
   
 
-  <meta name="author" content="Jason Ng">
+  <meta name="author" content="Jason Build">
 
   
   
@@ -214,7 +214,7 @@
   
 
   
-  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Jason Ng">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Jason Build">
   
 
   <link rel="manifest" href="/index.webmanifest">
@@ -236,9 +236,9 @@
   
   <meta property="twitter:card" content="summary">
   
-  <meta property="og:site_name" content="Jason Ng">
+  <meta property="og:site_name" content="Jason Build">
   <meta property="og:url" content="https://jasonbuild.github.io/">
-  <meta property="og:title" content="Jason Ng">
+  <meta property="og:title" content="Jason Build">
   <meta property="og:description" content="Data -&gt; Intelligence"><meta property="og:image" content="https://jasonbuild.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://jasonbuild.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
@@ -273,7 +273,7 @@
 
 
 
-  <title>Jason Ng</title>
+  <title>Jason Build</title>
 
 </head>
 
@@ -324,7 +324,7 @@
 
     
     <div class="d-none d-lg-inline-flex">
-      <a class="navbar-brand" href="/">Jason Ng</a>
+      <a class="navbar-brand" href="/">Jason Build</a>
     </div>
     
 
@@ -337,7 +337,7 @@
 
     
     <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
-      <a class="navbar-brand" href="/">Jason Ng</a>
+      <a class="navbar-brand" href="/">Jason Build</a>
     </div>
     
 
@@ -583,11 +583,11 @@
 
       
       
-      <img class="avatar avatar-circle" src="/author/jason-ng/avatar_hu52a603635ecebd45650b162dadabb4e5_12861_270x270_fill_q90_lanczos_center.jpg" alt="Jason Ng">
+      <img class="avatar avatar-circle" src="/author/jason-build/avatar_hu52a603635ecebd45650b162dadabb4e5_12861_270x270_fill_q90_lanczos_center.jpg" alt="Jason Build">
       
 
       <div class="portrait-title">
-        <h2>Jason Ng</h2>
+        <h2>Jason Build</h2>
         <h3>Data -&gt; Intelligence</h3>
 
         
@@ -885,14 +885,14 @@
   <div class="media-body">
 
     <h3 class="article-title mb-0 mt-0">
-      <a href="/post/hugo/" >Hugo</a>
+      <a href="/post/hugo/" >Hugo Setup</a>
     </h3>
 
     
     <div class="article-style">
-      install hugo https://rimdev.io/hugo-extended-latest-install-script-for-macos/
-publish to github pages https://sourcethemes.com/academic/docs/deployment/#github-pages
-update git add . git commit -m &quot;Initial commit&quot; git push -u origin master  hugo cd public git add . git commit -m &quot;Build website&quot; git push origin master cd .
+      Install hugo on mac Use the script from https://rimdev.io/hugo-extended-latest-install-script-for-macos/ to install hugo.
+Setup repo Follow the official guide https://sourcethemes.com/academic/docs/deployment/#github-pages to fork the Academic Kickstart repository.
+Configure your site git add .
     </div>
     
 
@@ -972,12 +972,14 @@ update git add . git commit -m &quot;Initial commit&quot; git push -u origin mas
   <div class="media-body">
 
     <h3 class="article-title mb-0 mt-0">
-      <a href="/post/python-parallel/" >Python Parallel</a>
+      <a href="/post/python-parallel/" >Multi-threaded Python Parallelization</a>
     </h3>
 
     
     <div class="article-style">
-      multithread import urllib2 from multiprocessing.dummy import Pool as ThreadPool urls = [ 'http://www.python.org', 'http://www.python.org/about/', 'http://www.onlamp.com/pub/a/python/2003/04/17/metaclasses.html', 'http://www.python.org/doc/', 'http://www.python.org/download/', 'http://www.python.org/getit/', 'http://www.python.org/community/', 'https://wiki.python.org/moin/', 'http://planet.python.org/', 'https://wiki.python.org/moin/LocalUserGroups', 'http://www.python.org/psf/', 'http://docs.python.org/devguide/', 'http://www.python.org/community/awards/' # etc.. ] # Make the Pool of workers pool = ThreadPool(4) # Open the urls in their own threads # and return the results results = pool.
+      One common use case of parallel in Python is network requests. One of the most simple solutions to send million of requests is using multiprocessing.dummy.Pool.
+Sample code
+import requests from multiprocessing.
     </div>
     
 
