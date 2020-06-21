@@ -5,12 +5,45 @@
     <link>https://jasonbuild.github.io/</link>
       <atom:link href="https://jasonbuild.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Jason Build</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 18 Jun 2020 01:38:57 +0800</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 21 Jun 2020 15:04:23 +0800</lastBuildDate>
     <image>
       <url>https://jasonbuild.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Jason Build</title>
       <link>https://jasonbuild.github.io/</link>
     </image>
+    
+    <item>
+      <title>Python Snippets</title>
+      <link>https://jasonbuild.github.io/post/python-snippets/</link>
+      <pubDate>Sun, 21 Jun 2020 15:04:23 +0800</pubDate>
+      <guid>https://jasonbuild.github.io/post/python-snippets/</guid>
+      <description>&lt;h1 id=&#34;general&#34;&gt;general&lt;/h1&gt;
+&lt;h2 id=&#34;split-a-list-into-evenly-sized-chunks&#34;&gt;split a list into evenly sized chunks&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def chunks(l, n):
+    n = max(1, n)
+    return (l[i:i + n] for i in range(0, len(l), n))
+
+items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+bin_size = 3
+for chunk_ind, chunk_items in enumerate(chunks(items, bin_size)):
+    print(&#39;{}\t{}&#39;.format(chunk_ind, chunk_items))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;csv&#34;&gt;csv&lt;/h1&gt;
+&lt;h2 id=&#34;list-of-dicts-to-csv&#34;&gt;list of dicts to csv&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import csv
+
+items_list = [
+    {&#39;name&#39;:&#39;bob&#39;, &#39;age&#39;:25, &#39;weight&#39;:200},
+    {&#39;name&#39;:&#39;jim&#39;, &#39;age&#39;:31, &#39;weight&#39;:180}
+]
+keys = items_list[0].keys()
+with open(&#39;items_list.csv&#39;, &#39;w&#39;) as output_file:
+    dict_writer = csv.DictWriter(output_file, keys)
+    dict_writer.writeheader()
+    dict_writer.writerows(items_list)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>nginx reverse proxy with .htaccess</title>
